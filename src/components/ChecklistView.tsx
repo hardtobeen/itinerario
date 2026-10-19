@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ITINERARY_STOPS, DAYS_DATA, ItineraryStop } from '../data/itineraryData';
-import { CheckSquare, Square, CheckCircle2, RotateCcw, ExternalLink, MapPin, AlertCircle, BookmarkCheck } from 'lucide-react';
+import { CheckSquare, Square, CheckCircle2, RotateCcw, ExternalLink, MapPin, AlertCircle, BookmarkCheck, Search } from 'lucide-react';
 
 interface ChecklistViewProps {
   completedStops: Record<string, boolean>;
@@ -40,27 +40,27 @@ export const ChecklistView: React.FC<ChecklistViewProps> = ({
   });
 
   return (
-    <div className="bg-white border border-stone-200 rounded-xl p-6 shadow-sm">
+    <div className="bg-white border border-stone-200/90 rounded-2xl p-4 sm:p-6 shadow-xs">
       {/* Header & Progress */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-stone-200">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-stone-200">
         <div>
           <div className="flex items-center gap-2">
             <BookmarkCheck className="w-5 h-5 text-amber-700" />
-            <h2 className="text-2xl font-serif font-bold text-stone-900">Checklist delle 47 Tappe</h2>
+            <h2 className="text-xl sm:text-2xl font-serif font-bold text-stone-900">Checklist delle 47 Tappe</h2>
           </div>
-          <p className="text-sm text-stone-600 mt-1">
-            Traccia il tuo viaggio in tempo reale. Le spunte rimangono salvate nel tuo browser.
+          <p className="text-xs sm:text-sm text-stone-600 mt-1">
+            Traccia il tuo viaggio in tempo reale. Le spunte rimangono salvate nel tuo dispositivo.
           </p>
         </div>
 
-        <div className="flex items-center gap-4">
-          <div className="text-right">
-            <div className="text-xs uppercase tracking-wider text-stone-500 font-medium">Progresso</div>
-            <div className="text-xl font-serif font-bold text-stone-900 tabular-nums">
-              {completedCount} <span className="text-sm font-sans font-normal text-stone-500">/ {totalStops} ({percent}%)</span>
+        <div className="flex items-center justify-between sm:justify-end gap-3 bg-stone-50 sm:bg-transparent p-3 sm:p-0 rounded-xl border sm:border-0 border-stone-200/80">
+          <div>
+            <div className="text-[10px] uppercase tracking-wider text-stone-500 font-semibold">Completamento</div>
+            <div className="text-lg sm:text-xl font-serif font-bold text-stone-900 tabular-nums">
+              {completedCount} <span className="text-xs font-sans font-normal text-stone-500">/ {totalStops} ({percent}%)</span>
             </div>
           </div>
-          <div className="w-24 bg-stone-100 rounded-full h-2.5 overflow-hidden border border-stone-200">
+          <div className="w-24 sm:w-28 bg-stone-200 rounded-full h-2.5 overflow-hidden">
             <div
               className="bg-amber-700 h-2.5 rounded-full transition-all duration-300"
               style={{ width: `${percent}%` }}
@@ -68,56 +68,58 @@ export const ChecklistView: React.FC<ChecklistViewProps> = ({
           </div>
           <button
             onClick={onResetChecklist}
-            className="p-2 text-stone-400 hover:text-stone-700 hover:bg-stone-100 rounded-lg transition-colors"
+            className="w-9 h-9 flex items-center justify-center text-stone-400 hover:text-stone-700 active:scale-90 hover:bg-stone-200 rounded-xl transition-colors"
             title="Azzera checklist"
+            aria-label="Azzera checklist"
           >
             <RotateCcw className="w-4 h-4" />
           </button>
         </div>
       </div>
 
-      {/* Filter and Search Bar */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 py-4 border-b border-stone-100">
-        <div className="flex items-center gap-1 p-1 bg-stone-100 rounded-lg w-full sm:w-auto">
+      {/* Filter and Search Bar: Mobile Swipeable */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 py-3.5 border-b border-stone-100">
+        <div className="flex items-center gap-1 p-1 bg-stone-100 rounded-xl overflow-x-auto no-scrollbar">
           <button
             onClick={() => setFilterMode('all')}
-            className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
-              filterMode === 'all' ? 'bg-white text-stone-900 shadow-sm' : 'text-stone-600 hover:text-stone-900'
+            className={`min-h-[34px] px-3 text-xs font-medium rounded-lg transition-colors shrink-0 active:scale-95 ${
+              filterMode === 'all' ? 'bg-white text-stone-900 shadow-xs font-semibold' : 'text-stone-600'
             }`}
           >
             Tutte ({totalStops})
           </button>
           <button
             onClick={() => setFilterMode('pending')}
-            className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
-              filterMode === 'pending' ? 'bg-white text-stone-900 shadow-sm' : 'text-stone-600 hover:text-stone-900'
+            className={`min-h-[34px] px-3 text-xs font-medium rounded-lg transition-colors shrink-0 active:scale-95 ${
+              filterMode === 'pending' ? 'bg-white text-stone-900 shadow-xs font-semibold' : 'text-stone-600'
             }`}
           >
-            Da visitare ({totalStops - completedCount})
+            Da fare ({totalStops - completedCount})
           </button>
           <button
             onClick={() => setFilterMode('completed')}
-            className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
-              filterMode === 'completed' ? 'bg-white text-stone-900 shadow-sm' : 'text-stone-600 hover:text-stone-900'
+            className={`min-h-[34px] px-3 text-xs font-medium rounded-lg transition-colors shrink-0 active:scale-95 ${
+              filterMode === 'completed' ? 'bg-white text-stone-900 shadow-xs font-semibold' : 'text-stone-600'
             }`}
           >
-            Completate ({completedCount})
+            Fatte ({completedCount})
           </button>
         </div>
 
-        <div className="w-full sm:w-64">
+        <div className="w-full sm:w-64 relative">
+          <Search className="w-4 h-4 text-stone-400 absolute left-3 top-2.5 sm:top-2" />
           <input
             type="text"
             placeholder="Cerca nella checklist..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full text-xs px-3 py-2 border border-stone-200 rounded-lg bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-amber-700 text-stone-800"
+            className="w-full text-base sm:text-xs pl-9 pr-3 py-2 border border-stone-200 rounded-xl bg-stone-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-amber-700 text-stone-800"
           />
         </div>
       </div>
 
       {/* Grouped by Day */}
-      <div className="mt-6 space-y-8">
+      <div className="mt-5 sm:mt-6 space-y-6 sm:space-y-8">
         {DAYS_DATA.map(day => {
           const dayStops = filteredStops.filter(s => s.dayId === day.id);
           if (dayStops.length === 0) return null;
@@ -126,16 +128,16 @@ export const ChecklistView: React.FC<ChecklistViewProps> = ({
 
           return (
             <div key={day.id} className="space-y-3">
-              <div className="flex items-center justify-between pb-2 border-b border-stone-200">
+              <div className="flex items-center justify-between pb-2 border-b border-stone-200/90">
                 <div className="flex items-center gap-2">
-                  <span className="font-serif font-bold text-lg text-stone-900">
+                  <span className="font-serif font-bold text-base sm:text-lg text-stone-900">
                     {day.dayName} {day.dateStr.split(' ')[0]} {day.dateStr.split(' ')[1]}
                   </span>
-                  <span className="text-stone-400">·</span>
-                  <span className="text-xs text-stone-500">{day.theme}</span>
+                  <span className="text-stone-300">·</span>
+                  <span className="text-xs text-stone-500 hidden sm:inline">{day.theme}</span>
                 </div>
                 <span className="text-xs font-mono text-stone-500 tabular-nums">
-                  {dayCompleted}/{dayStops.length} completate
+                  {dayCompleted}/{dayStops.length} fatte
                 </span>
               </div>
 
@@ -149,21 +151,23 @@ export const ChecklistView: React.FC<ChecklistViewProps> = ({
                   return (
                     <div
                       key={stop.id}
-                      className={`flex items-start gap-3 p-3 rounded-lg border transition-all ${
+                      className={`flex items-start gap-2 sm:gap-3 p-3 rounded-xl border transition-all ${
                         isChecked
-                          ? 'bg-stone-50/70 border-stone-200 text-stone-400 opacity-80'
-                          : 'bg-white border-stone-200/80 hover:border-amber-700/50 hover:shadow-xs'
+                          ? 'bg-stone-50/80 border-stone-200 text-stone-400 opacity-80'
+                          : 'bg-white border-stone-200/90 hover:border-amber-700/50 hover:shadow-xs'
                       }`}
                     >
+                      {/* Checkbox button: 44x44px touch hitbox for iOS thumbs */}
                       <button
                         onClick={() => onToggleStop(stop.id)}
-                        className="mt-0.5 text-stone-400 hover:text-amber-800 transition-colors shrink-0"
+                        className="w-11 h-11 -ml-2 -mt-2 flex items-center justify-center text-stone-400 hover:text-amber-800 active:scale-90 transition-transform shrink-0"
                         title={isChecked ? 'Segna come non visitata' : 'Segna come visitata'}
+                        aria-label={isChecked ? 'Segna come non visitata' : 'Segna come visitata'}
                       >
                         {isChecked ? (
-                          <CheckSquare className="w-5 h-5 text-amber-700" />
+                          <CheckSquare className="w-5 h-5 sm:w-6 sm:h-6 text-amber-700" />
                         ) : (
-                          <Square className="w-5 h-5 text-stone-300 hover:text-stone-400" />
+                          <Square className="w-5 h-5 sm:w-6 sm:h-6 text-stone-300 hover:text-stone-400" />
                         )}
                       </button>
 
@@ -185,7 +189,7 @@ export const ChecklistView: React.FC<ChecklistViewProps> = ({
                         )}
 
                         {/* Badges / Alerts */}
-                        <div className="flex flex-wrap items-center gap-2 mt-1.5 text-[11px]">
+                        <div className="flex flex-wrap items-center gap-1.5 mt-1.5 text-[11px]">
                           {stop.bookingRequired && (
                             <span className="text-amber-800 font-medium">
                               Prenotazione richiesta
@@ -207,18 +211,18 @@ export const ChecklistView: React.FC<ChecklistViewProps> = ({
                         <div className="flex items-center gap-3 mt-2 pt-2 border-t border-stone-100 text-[11px]">
                           <button
                             onClick={() => onSelectOnMap(stop.id)}
-                            className="text-stone-600 hover:text-amber-800 transition-colors flex items-center gap-1 font-medium"
+                            className="min-h-[32px] text-stone-600 hover:text-amber-800 transition-colors flex items-center gap-1 font-medium active:scale-95"
                           >
-                            <MapPin className="w-3 h-3" />
+                            <MapPin className="w-3.5 h-3.5" />
                             <span>Vedi su mappa</span>
                           </button>
                           <a
                             href={gmapsUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-stone-600 hover:text-amber-800 transition-colors flex items-center gap-1 font-medium"
+                            className="min-h-[32px] text-stone-600 hover:text-amber-800 transition-colors flex items-center gap-1 font-medium active:scale-95"
                           >
-                            <ExternalLink className="w-3 h-3" />
+                            <ExternalLink className="w-3.5 h-3.5" />
                             <span>Google Maps</span>
                           </a>
                         </div>

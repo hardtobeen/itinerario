@@ -31,6 +31,7 @@ import {
   Maximize2,
   HardDrive,
   Download,
+  BookOpen,
 } from 'lucide-react';
 
 import heroAutumn from './assets/images/paris_hero_autumn_1791576658682.jpg';
@@ -96,21 +97,21 @@ export default function App() {
   });
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] text-stone-900 flex flex-col selection:bg-amber-100">
+    <div className="min-h-screen bg-[#faf8f5] text-stone-900 flex flex-col selection:bg-amber-100 pb-24 md:pb-0">
       <OfflineIndicator />
 
-      {/* 3-Zone Top Bar Contract */}
-      <header className="sticky top-0 z-50 bg-[#faf8f5]/95 backdrop-blur-md border-b border-stone-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-8">
+      {/* 3-Zone Top Bar Contract (Desktop + Compact Mobile Header) */}
+      <header className="sticky top-0 z-40 bg-[#faf8f5]/95 backdrop-blur-md border-b border-stone-200/90 pt-safe">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-4 sm:gap-8">
           {/* Zone 1: Single text element wordmark */}
           <a
             href="/"
-            className="text-lg sm:text-xl font-serif font-bold tracking-tight text-stone-900 whitespace-nowrap shrink-0 hover:text-amber-800 transition-colors"
+            className="text-base sm:text-xl font-serif font-bold tracking-tight text-stone-900 whitespace-nowrap shrink-0 hover:text-amber-800 transition-colors"
           >
-            Parigi 16–20 Novembre 2026
+            Parigi 16–20 Nov 2026
           </a>
 
-          {/* Zone 2: 4 clean single-line text navigation links */}
+          {/* Zone 2: 4 clean single-line text navigation links (Desktop) */}
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-stone-600">
             <button
               onClick={() => setActiveTab('itinerary')}
@@ -151,60 +152,26 @@ export default function App() {
             </button>
           </nav>
 
-          {/* Zone 3: 1 primary action */}
-          <div className="flex items-center gap-2.5 shrink-0">
+          {/* Zone 3: Actions (Desktop & Mobile) */}
+          <div className="flex items-center gap-2 shrink-0">
             <PWAInstallButton />
             <button
               onClick={() => setIsBackupModalOpen(true)}
-              className="px-3.5 py-1.5 text-xs font-semibold text-stone-800 bg-white border border-stone-200 rounded-lg hover:bg-stone-50 hover:border-stone-300 transition-colors whitespace-nowrap shrink-0 flex items-center gap-1.5 shadow-xs"
+              className="min-h-[38px] px-2.5 sm:px-3.5 py-1 text-xs font-semibold text-stone-800 bg-white border border-stone-200/90 rounded-xl hover:bg-stone-50 active:scale-95 transition-all whitespace-nowrap shrink-0 flex items-center gap-1.5 shadow-2xs"
               title="Gestione e backup locale dei progressi"
+              aria-label="Dati locali e backup"
             >
               <HardDrive className="w-3.5 h-3.5 text-stone-600" />
               <span className="hidden sm:inline">Dati Locali</span>
             </button>
           </div>
         </div>
-
-        {/* Mobile Sub-Navigation Bar */}
-        <div className="md:hidden flex items-center justify-around px-2 py-2 border-t border-stone-200/60 bg-white text-xs font-medium">
-          <button
-            onClick={() => setActiveTab('itinerary')}
-            className={`px-2 py-1 rounded ${activeTab === 'itinerary' ? 'bg-amber-100 text-amber-900 font-bold' : 'text-stone-600'}`}
-          >
-            Itinerario
-          </button>
-          <button
-            onClick={() => setActiveTab('map')}
-            className={`px-2 py-1 rounded ${activeTab === 'map' ? 'bg-amber-100 text-amber-900 font-bold' : 'text-stone-600'}`}
-          >
-            Mappa
-          </button>
-          <button
-            onClick={() => setActiveTab('checklist')}
-            className={`px-2 py-1 rounded ${activeTab === 'checklist' ? 'bg-amber-100 text-amber-900 font-bold' : 'text-stone-600'}`}
-          >
-            Checklist ({completedCount})
-          </button>
-          <button
-            onClick={() => setActiveTab('guide')}
-            className={`px-2 py-1 rounded ${activeTab === 'guide' ? 'bg-amber-100 text-amber-900 font-bold' : 'text-stone-600'}`}
-          >
-            Guida
-          </button>
-          <button
-            onClick={() => setIsBackupModalOpen(true)}
-            className="p-1 rounded text-stone-600 hover:text-stone-900"
-            title="Dati locali"
-          >
-            <HardDrive className="w-4 h-4" />
-          </button>
-        </div>
       </header>
 
       {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-8">
-        {/* Editorial Hero Presentation */}
-        <section className="relative rounded-2xl overflow-hidden border border-stone-200 bg-stone-900 text-white shadow-sm">
+      <main className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-4 sm:py-8 flex-1 w-full space-y-4 sm:space-y-8">
+        {/* Editorial Hero Presentation: Compact on Mobile, Full on Desktop */}
+        <section className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-stone-200/90 bg-stone-900 text-white shadow-xs">
           <div className="absolute inset-0 z-0">
             <img
               src={heroAutumn}
@@ -212,48 +179,43 @@ export default function App() {
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover object-center opacity-40 mix-blend-luminosity"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-950/70 to-stone-950/30" />
+            <div className="absolute inset-0 bg-gradient-to-r from-stone-950/95 via-stone-950/75 to-stone-950/40" />
           </div>
 
-          <div className="relative z-10 p-6 sm:p-10 lg:p-12 max-w-3xl space-y-4">
-            <div className="flex items-center gap-3 text-xs tracking-wider uppercase text-amber-300 font-medium">
-              <span>Itinerario 100% Offline</span>
+          <div className="relative z-10 p-4 sm:p-10 lg:p-12 max-w-3xl space-y-2 sm:space-y-4">
+            <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] sm:text-xs tracking-wider uppercase text-amber-300 font-semibold">
+              <span>Itinerario 100% Locale</span>
               <span aria-hidden="true">·</span>
               <span>16–20 Novembre 2026</span>
               <span aria-hidden="true">·</span>
-              <span>47 Tappe Google Maps</span>
+              <span>47 Tappe</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight leading-tight text-balance">
-              Parigi giorno per giorno: musei, bouillons, vintage e tramonti
+            <h1 className="text-xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight leading-tight">
+              Parigi giorno per giorno
             </h1>
 
-            <p className="text-sm sm:text-base text-stone-300 leading-relaxed max-w-2xl">
+            <p className="text-xs sm:text-base text-stone-300 leading-relaxed max-w-2xl">
               Hotel a <strong>Place de Clichy</strong> (metro 2 e 13). Arrivo lunedì 16 alle 11:00,
-              partenza venerdì 20 alle 17:30. Orari programmati, linee di trasporto ottimali e
-              indicazioni su cosa tagliare in caso di ritardo.
+              partenza venerdì 20 alle 17:30. Orari, metro e note per ogni tappa.
             </p>
 
             {/* Unboxed Metadata Strip (Zero-Pill Discipline) */}
-            <div className="pt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-stone-300 font-medium">
+            <div className="pt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] sm:text-xs text-stone-300 font-medium">
               <span>Hotel Clichy (Metro 2 & 13)</span>
               <span aria-hidden="true">·</span>
-              <span>Arrivo Lunedì 11:00</span>
+              <span>Volo CDG</span>
               <span aria-hidden="true">·</span>
-              <span>Partenza Venerdì 17:30</span>
-              <span aria-hidden="true">·</span>
-              <span className="text-amber-300 font-mono tabular-nums">
+              <span className="text-amber-300 font-mono tabular-nums font-semibold">
                 {completedCount} di {checklistTotal} tappe visitate
               </span>
-              <span aria-hidden="true">·</span>
-              <span className="text-emerald-400 font-medium">Salvataggio Locale Attivo</span>
             </div>
           </div>
         </section>
 
         {/* Tab 1: Itinerario Timeline */}
         {activeTab === 'itinerary' && (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
             {/* Left Column: Timeline (7 cols on desktop) */}
             <div className="lg:col-span-7 space-y-6">
               <TimelineView
@@ -269,9 +231,9 @@ export default function App() {
               />
             </div>
 
-            {/* Right Column: Sticky Preview Map */}
-            <div className="lg:col-span-5 space-y-4 lg:sticky lg:top-24">
-              <div className="bg-white border border-stone-200 rounded-xl p-4 shadow-xs">
+            {/* Right Column: Sticky Preview Map (Desktop only, on mobile users have the bottom tab or dedicated section) */}
+            <div className="hidden lg:block lg:col-span-5 space-y-4 lg:sticky lg:top-24">
+              <div className="bg-white border border-stone-200 rounded-2xl p-4 shadow-xs">
                 <div className="flex items-center justify-between pb-3 border-b border-stone-200">
                   <div className="flex items-center gap-2">
                     <MapPin className="w-4 h-4 text-amber-700" />
@@ -283,7 +245,7 @@ export default function App() {
                     onClick={() => setActiveTab('map')}
                     className="text-xs font-semibold text-amber-800 hover:text-amber-900 flex items-center gap-1 transition-colors"
                   >
-                    <span>Apri a tutto schermo</span>
+                    <span>Espandi</span>
                     <Maximize2 className="w-3 h-3" />
                   </button>
                 </div>
@@ -312,13 +274,13 @@ export default function App() {
                   </div>
                   <div className="flex items-center gap-1.5">
                     <span className="w-2.5 h-2.5 rounded-full bg-orange-500 inline-block"></span>
-                    <span>Tappa selezionata</span>
+                    <span>Selezionata</span>
                   </div>
                 </div>
               </div>
 
               {/* Day Quick Summary Card */}
-              <div className="bg-stone-100/90 border border-stone-200 rounded-xl p-4 text-xs space-y-2">
+              <div className="bg-stone-100/90 border border-stone-200 rounded-2xl p-4 text-xs space-y-2">
                 <div className="font-semibold text-stone-900 flex items-center gap-1.5">
                   <Info className="w-3.5 h-3.5 text-amber-800" />
                   <span>Promemoria Logistica</span>
@@ -361,8 +323,63 @@ export default function App() {
         onImportCompletedStops={handleImportCompletedStops}
       />
 
-      {/* Quiet Footer */}
-      <footer className="mt-16 border-t border-stone-200 bg-white py-8 text-stone-500 text-xs">
+      {/* Native iOS Bottom Tab Bar (Mobile Only: Fixed, Frosted Glass, Touch Ergonomics) */}
+      <nav
+        aria-label="Navigazione rapida mobile"
+        className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-xl border-t border-stone-200/90 pb-safe shadow-lg"
+      >
+        <div className="grid grid-cols-4 items-center h-14">
+          <button
+            onClick={() => setActiveTab('itinerary')}
+            className={`flex flex-col items-center justify-center h-full active:scale-90 transition-transform ${
+              activeTab === 'itinerary' ? 'text-amber-800 font-bold' : 'text-stone-500'
+            }`}
+          >
+            <Calendar className="w-5 h-5" />
+            <span className="text-[10px] mt-0.5 tracking-tight">Itinerario</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('map')}
+            className={`flex flex-col items-center justify-center h-full active:scale-90 transition-transform ${
+              activeTab === 'map' ? 'text-amber-800 font-bold' : 'text-stone-500'
+            }`}
+          >
+            <Compass className="w-5 h-5" />
+            <span className="text-[10px] mt-0.5 tracking-tight">Mappa</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('checklist')}
+            className={`relative flex flex-col items-center justify-center h-full active:scale-90 transition-transform ${
+              activeTab === 'checklist' ? 'text-amber-800 font-bold' : 'text-stone-500'
+            }`}
+          >
+            <div className="relative">
+              <BookmarkCheck className="w-5 h-5" />
+              {completedCount > 0 && (
+                <span className="absolute -top-1 -right-2.5 bg-amber-800 text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center tabular-nums">
+                  {completedCount}
+                </span>
+              )}
+            </div>
+            <span className="text-[10px] mt-0.5 tracking-tight">Checklist</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('guide')}
+            className={`flex flex-col items-center justify-center h-full active:scale-90 transition-transform ${
+              activeTab === 'guide' ? 'text-amber-800 font-bold' : 'text-stone-500'
+            }`}
+          >
+            <BookOpen className="w-5 h-5" />
+            <span className="text-[10px] mt-0.5 tracking-tight">Guida</span>
+          </button>
+        </div>
+      </nav>
+
+      {/* Quiet Footer (Desktop) */}
+      <footer className="hidden md:block mt-16 border-t border-stone-200 bg-white py-8 text-stone-500 text-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="font-serif font-bold text-stone-800 text-sm">Parigi 16–20 Novembre 2026</span>

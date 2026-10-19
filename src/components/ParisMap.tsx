@@ -29,7 +29,7 @@ export const ParisMap: React.FC<ParisMapProps> = ({
   const markersLayerRef = useRef<L.LayerGroup | null>(null);
   const routeLayerRef = useRef<L.Polyline | null>(null);
 
-  // Initialize Map
+  // Initialize Map safely
   useEffect(() => {
     if (!mapContainerRef.current || mapInstanceRef.current) return;
 
@@ -51,7 +51,23 @@ export const ParisMap: React.FC<ParisMapProps> = ({
     markersLayerRef.current = markersGroup;
     mapInstanceRef.current = map;
 
+    // Observe container resize to invalidateSize properly
+    const resizeObserver = new ResizeObserver(() => {
+      if (mapInstanceRef.current) {
+        try {
+          mapInstanceRef.current.invalidateSize();
+        } catch {
+          // ignore
+        }
+      }
+    });
+
+    if (mapContainerRef.current) {
+      resizeObserver.observe(mapContainerRef.current);
+    }
+
     return () => {
+      resizeObserver.disconnect();
       map.remove();
       mapInstanceRef.current = null;
     };
@@ -97,7 +113,6 @@ export const ParisMap: React.FC<ParisMapProps> = ({
 
     // Filter valid stops inside Paris coordinates (ignore airport CDG for bounds framing)
     const validStops = stops.filter(s => s.coordinates && s.coordinates[0] < 48.95);
-
     const latLngsForRoute: L.LatLngTuple[] = [];
 
     validStops.forEach((stop) => {
@@ -178,27 +193,54 @@ export const ParisMap: React.FC<ParisMapProps> = ({
       routeLayerRef.current = polyline;
     }
 
-    // Fit map bounds
+    // Fit map bounds safely (prevent NaN if container is hidden or 0 size)
     if (bounds.length > 0 && selectedStopId === null) {
-      map.fitBounds(L.latLngBounds(bounds), { padding: [40, 40], maxZoom: 14 });
+      try {
+        const size = map.getSize();
+        if (size && size.x > 0 && size.y > 0) {
+          map.fitBounds(L.latLngBounds(bounds), { padding: [40, 40], maxZoom: 14 });
+        }
+      } catch {
+        // Safe fallback
+      }
     }
   }, [stops, selectedStopId, selectedDayId, onSelectStop]);
 
-  // Center on selected stop if changed
+  // Center on selected stop safely
   useEffect(() => {
     if (!selectedStopId || !mapInstanceRef.current) return;
+    const map = mapInstanceRef.current;
     const target = stops.find(s => s.id === selectedStopId);
-    if (target && target.coordinates) {
-      mapInstanceRef.current.flyTo(target.coordinates, 15, { duration: 0.8 });
+    if (!target || !target.coordinates) return;
+
+    try {
+      const size = map.getSize();
+      // If container is hidden (e.g. display:none on mobile), do not call flyTo which divides by 0 and throws NaN
+      if (!size || size.x <= 0 || size.y <= 0) {
+        map.setView(target.coordinates, 15);
+        return;
+      }
+      map.flyTo(target.coordinates, 15, { duration: 0.8 });
+    } catch {
+      // Fallback without throwing LatLng(NaN, NaN)
+      map.setView(target.coordinates, 15);
     }
   }, [selectedStopId, stops]);
 
   const handleResetView = () => {
     if (!mapInstanceRef.current) return;
+    const map = mapInstanceRef.current;
     const validStops = stops.filter(s => s.coordinates && s.coordinates[0] < 48.95);
     const bounds = validStops.map(s => s.coordinates);
     bounds.push(HOTEL_INFO.coordinates);
-    mapInstanceRef.current.fitBounds(L.latLngBounds(bounds), { padding: [40, 40] });
+    try {
+      const size = map.getSize();
+      if (size && size.x > 0 && size.y > 0) {
+        map.fitBounds(L.latLngBounds(bounds), { padding: [40, 40] });
+      }
+    } catch {
+      map.setView([48.8606, 2.3376], 13);
+    }
   };
 
   return (
