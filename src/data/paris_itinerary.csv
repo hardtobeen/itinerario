@@ -1,6 +1,6 @@
 Numero,Giorno,Ora,Nome,Indirizzo,Tragitto,Note,Prenotazione,TagliaSeInRitardo,Lat,Lng
-,lunedi,11:00,"Arrivo (ipotesi: CDG)","","RER B fino a Gare du Nord/Châtelet, poi metro verso Place de Clichy: ~1h–1h15","Con valigie: evita le ore di punta. Se arrivi a Orly o Beauvais il tempo cambia.",NO,NO,49.0097,2.5479
-,lunedi,12:45,"Hotel zona Clichy: lascia le valigie","Place de Clichy (metro 2 e 13)","Place de Clichy (metro 2 e 13)","Check-in di solito dalle 15:00: chiedi solo deposito bagagli.",NO,NO,48.8837,2.3274
+,lunedi,11:00,"Arrivo Aeroporto di Parigi-Orly (ORY)","Aéroport de Paris-Orly, 94390 Orly","Metro 14 diretta da Aéroport d'Orly a Saint-Lazare (~25 min), poi Metro 13 o a piedi verso Place de Clichy (~10 min): Totale ~35-40 min","Arrivo a Orly. Con la nuova linea 14 della metro arrivi dritto in centro a Saint-Lazare in soli 25 minuti senza cambi con le valigie!",NO,NO,48.7262,2.3652
+,lunedi,12:15,"Hotel zona Clichy: lascia le valigie","Place de Clichy, 75017 Paris","Metro 13 da Saint-Lazare a Place de Clichy (1 fermata)","Check-in di solito dalle 15:00: chiedi solo deposito bagagli alla reception.",NO,NO,48.8837,2.3274
 ,lunedi,13:00,"Trasferimento al Quartiere Latino","","Metro/RER ~35–40 min fino a Saint-Michel","Zaino leggero, biglietti già caricati.",NO,NO,48.8532,2.3442
 1,lunedi,13:45,"Chipotle Mexican Grill","96 Bd Saint-Germain, 5e","Da Saint-Michel ~600 m / 8 min a piedi","Aperto 11:00–23:00. Pranzo veloce (30 min).",NO,NO,48.8524,2.3458
 2,lunedi,14:30,"Cattedrale di Notre-Dame","6 Parvis Notre-Dame, 4e","Da Chipotle ~1,0 km / 14 min a piedi","40 min. Ingresso gratuito; controlla la coda sul sito ufficiale.",NO,NO,48.8529,2.35
@@ -63,5 +63,5 @@ Numero,Giorno,Ora,Nome,Indirizzo,Tragitto,Note,Prenotazione,TagliaSeInRitardo,La
 46,venerdi,12:50,"FREE'P'STAR","61 Rue de la Verrerie, 4e","Dalla Perlerie ~350 m / 5 min","15 min. Aperto 11:00–20:30. Celebre negozio vintage del Marais.",NO,NO,48.8578,2.3532
 47,venerdi,13:10,"Aux Merveilleux de Fred","24 Rue du Pont Louis-Philippe, 4e","Da Free'P'Star ~500 m / 7 min","5 min: dolce da portare con te (meringhe e panna tipiche). Aperto 07:30–20:00.",NO,NO,48.8554,2.3557
 ,venerdi,13:20,"Rientro in hotel per le valigie","","Metro Hôtel de Ville → Place de Clichy (~35 min)","Arrivo previsto alle ~13:55 per recuperare i bagagli.",NO,NO,48.8837,2.3274
-,venerdi,14:10,"Hotel → aeroporto","","RER B ~1h–1h15 (se CDG)","Arrivo previsto alle ~15:30: esattamente 2 ore prima del volo delle 17:30.",NO,NO,49.0097,2.5479
-,venerdi,17:30,"Partenza volo","","Imbarco e decollo","Fine del viaggio a Parigi.",NO,NO,49.0097,2.5479
+,venerdi,14:15,"Hotel (Place de Clichy) → Aeroporto di Orly (ORY)","Aéroport de Paris-Orly, 94390 Orly","Metro 13 o a piedi a Saint-Lazare, poi Metro 14 diretta fino ad Aéroport d'Orly (~25 min) : Totale ~40 min","Partendo alle 14:15 arrivi comodamente a Orly intorno alle 15:00 per il volo delle 17:30.",NO,NO,48.7262,2.3652
+,venerdi,17:30,"Partenza volo da Parigi-Orly (ORY)","Aéroport de Paris-Orly, 94390 Orly","Imbarco e decollo","Fine del viaggio a Parigi.",NO,NO,48.7262,2.3652

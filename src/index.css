@@ -48,23 +48,6 @@
   scrollbar-width: none;
 }
 
-/* Leaflet popup styling fixes */
-.leaflet-popup-content-wrapper {
-  border-radius: 0.75rem;
-  padding: 0;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e7e5e4;
-}
-
-.leaflet-popup-content {
-  margin: 12px 14px;
-  line-height: 1.4;
-}
-
-.leaflet-container {
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
-}
-
 @media print {
   header, footer, nav, button, input {
     display: none !important;

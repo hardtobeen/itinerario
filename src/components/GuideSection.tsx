@@ -37,12 +37,12 @@ export const GuideSection: React.FC = () => {
           </div>
 
           <div className="bg-stone-800/80 border border-stone-700/80 rounded-lg p-4 text-xs space-y-2 shrink-0 lg:max-w-xs">
-            <div className="font-semibold text-stone-200">Regole Bagagli Hotel:</div>
+            <div className="font-semibold text-stone-200">Aeroporto & Valigie:</div>
             <p className="text-stone-300">
-              • <span className="text-amber-300">Lunedì:</span> Check-in dalle 15:00, chiedi solo deposito bagagli alle 12:45.
+              • <span className="text-amber-300">Lunedì:</span> Arrivo a Orly (ORY), Metro 14 diretta fino a Saint-Lazare e deposito bagagli all'hotel a Clichy.
             </p>
             <p className="text-stone-300">
-              • <span className="text-amber-300">Venerdì:</span> Chiedi di tenere le valigie fino alle 13:20–14:00 per il rientro verso CDG.
+              • <span className="text-amber-300">Venerdì:</span> Ritiro valigie in hotel alle 13:50, poi Metro 14 diretta per Orly (volo ore 17:30).
             </p>
           </div>
         </div>

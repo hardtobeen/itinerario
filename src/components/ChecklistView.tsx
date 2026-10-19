@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { ITINERARY_STOPS, DAYS_DATA, ItineraryStop } from '../data/itineraryData';
-import { CheckSquare, Square, CheckCircle2, RotateCcw, ExternalLink, MapPin, AlertCircle, BookmarkCheck, Search } from 'lucide-react';
+import { CheckSquare, Square, CheckCircle2, RotateCcw, ExternalLink, MapPin, AlertCircle, BookmarkCheck, Search, Navigation } from 'lucide-react';
 
 interface ChecklistViewProps {
   completedStops: Record<string, boolean>;
   onToggleStop: (stopId: string) => void;
   onResetChecklist: () => void;
-  onSelectOnMap: (stopId: string) => void;
+  onSelectOnMap?: (stopId: string) => void;
 }
 
 export const ChecklistView: React.FC<ChecklistViewProps> = ({
@@ -182,14 +182,28 @@ export const ChecklistView: React.FC<ChecklistViewProps> = ({
                           </span>
                         </div>
 
+                        {/* Dedicated Street Address Button */}
                         {stop.address && (
-                          <div className="text-xs text-stone-500 truncate mt-0.5">
-                            {stop.address}
+                          <div className="mt-1.5">
+                            <a
+                              href={gmapsUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 text-stone-900 text-xs font-semibold border border-amber-200/80 transition-all active:scale-95"
+                              title={`Apri ${stop.address} su Google Maps`}
+                            >
+                              <MapPin className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                              <span className="text-stone-500 font-normal">Via:</span>
+                              <span className="underline decoration-amber-300 underline-offset-2 truncate max-w-[260px] sm:max-w-none">
+                                {stop.address}
+                              </span>
+                              <ExternalLink className="w-3 h-3 text-amber-700 opacity-60 ml-0.5" />
+                            </a>
                           </div>
                         )}
 
                         {/* Badges / Alerts */}
-                        <div className="flex flex-wrap items-center gap-1.5 mt-1.5 text-[11px]">
+                        <div className="flex flex-wrap items-center gap-1.5 mt-2 text-[11px]">
                           {stop.bookingRequired && (
                             <span className="text-amber-800 font-medium">
                               Prenotazione richiesta
@@ -207,23 +221,18 @@ export const ChecklistView: React.FC<ChecklistViewProps> = ({
                           )}
                         </div>
 
-                        {/* Actions */}
-                        <div className="flex items-center gap-3 mt-2 pt-2 border-t border-stone-100 text-[11px]">
-                          <button
-                            onClick={() => onSelectOnMap(stop.id)}
-                            className="min-h-[32px] text-stone-600 hover:text-amber-800 transition-colors flex items-center gap-1 font-medium active:scale-95"
-                          >
-                            <MapPin className="w-3.5 h-3.5" />
-                            <span>Vedi su mappa</span>
-                          </button>
+                        {/* Actions: Direct Naviga Button */}
+                        <div className="flex items-center gap-3 mt-3 pt-2 border-t border-stone-100 text-xs">
                           <a
                             href={gmapsUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="min-h-[32px] text-stone-600 hover:text-amber-800 transition-colors flex items-center gap-1 font-medium active:scale-95"
+                            className="min-h-[38px] px-3.5 py-1.5 rounded-xl bg-amber-800 hover:bg-amber-900 text-white font-bold transition-all flex items-center gap-1.5 active:scale-95 shadow-xs"
+                            title="Apri navigatore Google Maps per questa via"
                           >
-                            <ExternalLink className="w-3.5 h-3.5" />
-                            <span>Google Maps</span>
+                            <Navigation className="w-3.5 h-3.5" />
+                            <span>Naviga con Google Maps</span>
+                            <ExternalLink className="w-3 h-3 opacity-80" />
                           </a>
                         </div>
                       </div>

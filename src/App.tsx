@@ -7,11 +7,9 @@ import {
   EMERGENCY_CUTS,
   ItineraryStop,
 } from './data/itineraryData';
-import { ParisMap } from './components/ParisMap';
 import { TimelineView } from './components/TimelineView';
 import { ChecklistView } from './components/ChecklistView';
 import { GuideSection } from './components/GuideSection';
-import { FullInteractiveMapSection } from './components/FullInteractiveMapSection';
 import { PWAInstallButton } from './components/PWAInstallButton';
 import { OfflineIndicator } from './components/OfflineIndicator';
 import { LocalDataBackupModal } from './components/LocalDataBackupModal';
@@ -32,12 +30,13 @@ import {
   HardDrive,
   Download,
   BookOpen,
+  Navigation,
 } from 'lucide-react';
 
 import heroAutumn from './assets/images/paris_hero_autumn_1791576658682.jpg';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'itinerary' | 'map' | 'checklist' | 'guide'>('itinerary');
+  const [activeTab, setActiveTab] = useState<'itinerary' | 'checklist' | 'guide'>('itinerary');
   const [selectedDayId, setSelectedDayId] = useState<string>('lunedi');
   const [selectedStopId, setSelectedStopId] = useState<string | null>('stop-1');
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
@@ -84,17 +83,11 @@ export default function App() {
     if (targetStop) {
       setSelectedDayId(targetStop.dayId);
     }
-    setActiveTab('map');
+    setActiveTab('itinerary');
   };
 
   const checklistTotal = ITINERARY_STOPS.filter((s) => s.isChecklistItem).length;
   const completedCount = ITINERARY_STOPS.filter((s) => s.isChecklistItem && completedStops[s.id]).length;
-
-  // Stops filtered for preview map in itinerary view according to selected day
-  const mapStops = ITINERARY_STOPS.filter((s) => {
-    if (selectedDayId === 'all') return true;
-    return s.dayId === selectedDayId;
-  });
 
   return (
     <div className="min-h-screen bg-[#faf8f5] text-stone-900 flex flex-col selection:bg-amber-100 pb-24 md:pb-0">
@@ -111,7 +104,7 @@ export default function App() {
             Parigi 16–20 Nov 2026
           </a>
 
-          {/* Zone 2: 4 clean single-line text navigation links (Desktop) */}
+          {/* Zone 2: 3 clean navigation links */}
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-stone-600">
             <button
               onClick={() => setActiveTab('itinerary')}
@@ -120,14 +113,6 @@ export default function App() {
               }`}
             >
               Itinerario
-            </button>
-            <button
-              onClick={() => setActiveTab('map')}
-              className={`hover:text-stone-900 transition-colors whitespace-nowrap shrink-0 ${
-                activeTab === 'map' ? 'text-amber-800 font-bold border-b-2 border-amber-800 pb-0.5' : ''
-              }`}
-            >
-              Mappa Interattiva
             </button>
             <button
               onClick={() => setActiveTab('checklist')}
@@ -148,7 +133,7 @@ export default function App() {
                 activeTab === 'guide' ? 'text-amber-800 font-bold border-b-2 border-amber-800 pb-0.5' : ''
               }`}
             >
-              Guida & Regole
+              Guida & Info Orly
             </button>
           </nav>
 
@@ -196,15 +181,17 @@ export default function App() {
             </h1>
 
             <p className="text-xs sm:text-base text-stone-300 leading-relaxed max-w-2xl">
-              Hotel a <strong>Place de Clichy</strong> (metro 2 e 13). Arrivo lunedì 16 alle 11:00,
-              partenza venerdì 20 alle 17:30. Orari, metro e note per ogni tappa.
+              Arrivo all'aeroporto di <strong>Parigi-Orly (ORY)</strong> con Metro 14 diretta, hotel a <strong>Place de Clichy</strong> (metro 2 e 13).
+              Ogni singola tappa include la via esatta e il pulsante per avviare subito la navigazione su Google Maps.
             </p>
 
             {/* Unboxed Metadata Strip (Zero-Pill Discipline) */}
             <div className="pt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] sm:text-xs text-stone-300 font-medium">
+              <span>Arrivo Orly (Metro 14)</span>
+              <span aria-hidden="true">·</span>
               <span>Hotel Clichy (Metro 2 & 13)</span>
               <span aria-hidden="true">·</span>
-              <span>Volo CDG</span>
+              <span>Navigazione Google Maps diretta</span>
               <span aria-hidden="true">·</span>
               <span className="text-amber-300 font-mono tabular-nums font-semibold">
                 {completedCount} di {checklistTotal} tappe visitate
@@ -213,106 +200,41 @@ export default function App() {
           </div>
         </section>
 
-        {/* Tab 1: Itinerario Timeline */}
+        {/* Tab 1: Itinerario Timeline (Full width, zero map clutter) */}
         {activeTab === 'itinerary' && (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
-            {/* Left Column: Timeline (7 cols on desktop) */}
-            <div className="lg:col-span-7 space-y-6">
-              <TimelineView
-                stops={ITINERARY_STOPS}
-                selectedDayId={selectedDayId}
-                onSelectDay={setSelectedDayId}
-                selectedStopId={selectedStopId}
-                onSelectStop={setSelectedStopId}
-                completedStops={completedStops}
-                onToggleStop={handleToggleStop}
-                categoryFilter={categoryFilter}
-                onSelectCategoryFilter={setCategoryFilter}
-              />
-            </div>
-
-            {/* Right Column: Sticky Preview Map (Desktop only, on mobile users have the bottom tab or dedicated section) */}
-            <div className="hidden lg:block lg:col-span-5 space-y-4 lg:sticky lg:top-24">
-              <div className="bg-white border border-stone-200 rounded-2xl p-4 shadow-xs">
-                <div className="flex items-center justify-between pb-3 border-b border-stone-200">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-amber-700" />
-                    <h3 className="font-serif font-bold text-base text-stone-900">
-                      Mappa Rapida
-                    </h3>
-                  </div>
-                  <button
-                    onClick={() => setActiveTab('map')}
-                    className="text-xs font-semibold text-amber-800 hover:text-amber-900 flex items-center gap-1 transition-colors"
-                  >
-                    <span>Espandi</span>
-                    <Maximize2 className="w-3 h-3" />
-                  </button>
-                </div>
-
-                <p className="text-xs text-stone-500 mt-2 mb-3">
-                  I numeri sui pin corrispondono all'ordine delle tappe del giorno selezionato.
-                </p>
-
-                <div className="h-[440px] w-full">
-                  <ParisMap
-                    stops={mapStops}
-                    selectedStopId={selectedStopId}
-                    onSelectStop={setSelectedStopId}
-                    selectedDayId={selectedDayId}
-                  />
-                </div>
-
-                <div className="mt-3 pt-3 border-t border-stone-100 flex flex-wrap items-center justify-between gap-2 text-[11px] text-stone-600">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-stone-900 inline-block"></span>
-                    <span>Hotel (Clichy)</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-700 inline-block"></span>
-                    <span>Tappe del giorno</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-orange-500 inline-block"></span>
-                    <span>Selezionata</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Day Quick Summary Card */}
-              <div className="bg-stone-100/90 border border-stone-200 rounded-2xl p-4 text-xs space-y-2">
-                <div className="font-semibold text-stone-900 flex items-center gap-1.5">
-                  <Info className="w-3.5 h-3.5 text-amber-800" />
-                  <span>Promemoria Logistica</span>
-                </div>
-                <p className="text-stone-600 leading-relaxed">
-                  I tempi di percorrenza sono stime: controlla sempre Google Maps prima di muoverti. Se sei in ritardo su una tappa, consulta subito la sezione <em>Cosa tagliare per primo</em>.
-                </p>
-              </div>
-            </div>
+          <div className="max-w-4xl mx-auto w-full">
+            <TimelineView
+              stops={ITINERARY_STOPS}
+              selectedDayId={selectedDayId}
+              onSelectDay={setSelectedDayId}
+              selectedStopId={selectedStopId}
+              onSelectStop={setSelectedStopId}
+              completedStops={completedStops}
+              onToggleStop={handleToggleStop}
+              categoryFilter={categoryFilter}
+              onSelectCategoryFilter={setCategoryFilter}
+            />
           </div>
         )}
 
-        {/* Tab 2: Dedicated Interactive Map Section */}
-        {activeTab === 'map' && (
-          <FullInteractiveMapSection
-            completedStops={completedStops}
-            onToggleStop={handleToggleStop}
-          />
-        )}
-
-        {/* Tab 3: 47-Step Checklist View */}
+        {/* Tab 2: 47-Step Checklist View */}
         {activeTab === 'checklist' && (
-          <ChecklistView
-            completedStops={completedStops}
-            onToggleStop={handleToggleStop}
-            onResetChecklist={handleResetChecklist}
-            onSelectOnMap={handleSelectOnMap}
-          />
+          <div className="max-w-4xl mx-auto w-full">
+            <ChecklistView
+              completedStops={completedStops}
+              onToggleStop={handleToggleStop}
+              onResetChecklist={handleResetChecklist}
+              onSelectOnMap={handleSelectOnMap}
+            />
+          </div>
         )}
 
-        {/* Tab 4: Complete Guide & Logistics View */}
-        {activeTab === 'guide' && <GuideSection />}
+        {/* Tab 3: Complete Guide & Logistics View */}
+        {activeTab === 'guide' && (
+          <div className="max-w-4xl mx-auto w-full">
+            <GuideSection />
+          </div>
+        )}
       </main>
 
       {/* Local Data Backup Modal */}
@@ -328,7 +250,7 @@ export default function App() {
         aria-label="Navigazione rapida mobile"
         className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-xl border-t border-stone-200/90 pb-safe shadow-lg"
       >
-        <div className="grid grid-cols-4 items-center h-14">
+        <div className="grid grid-cols-3 items-center h-14">
           <button
             onClick={() => setActiveTab('itinerary')}
             className={`flex flex-col items-center justify-center h-full active:scale-90 transition-transform ${
@@ -336,17 +258,7 @@ export default function App() {
             }`}
           >
             <Calendar className="w-5 h-5" />
-            <span className="text-[10px] mt-0.5 tracking-tight">Itinerario</span>
-          </button>
-
-          <button
-            onClick={() => setActiveTab('map')}
-            className={`flex flex-col items-center justify-center h-full active:scale-90 transition-transform ${
-              activeTab === 'map' ? 'text-amber-800 font-bold' : 'text-stone-500'
-            }`}
-          >
-            <Compass className="w-5 h-5" />
-            <span className="text-[10px] mt-0.5 tracking-tight">Mappa</span>
+            <span className="text-[10px] mt-0.5 tracking-tight font-medium">Itinerario</span>
           </button>
 
           <button
@@ -363,7 +275,7 @@ export default function App() {
                 </span>
               )}
             </div>
-            <span className="text-[10px] mt-0.5 tracking-tight">Checklist</span>
+            <span className="text-[10px] mt-0.5 tracking-tight font-medium">Checklist</span>
           </button>
 
           <button
@@ -373,7 +285,7 @@ export default function App() {
             }`}
           >
             <BookOpen className="w-5 h-5" />
-            <span className="text-[10px] mt-0.5 tracking-tight">Guida</span>
+            <span className="text-[10px] mt-0.5 tracking-tight font-medium">Guida & Orly</span>
           </button>
         </div>
       </nav>
