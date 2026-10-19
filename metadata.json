@@ -1,0 +1,6 @@
+{
+  "name": "Parigi 16-20 Novembre 2026 - Itinerario",
+  "description": "Itinerario interattivo giorno per giorno a Parigi con 47 tappe dettagliate, orari, tragitti, mappa interattiva e checklist.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

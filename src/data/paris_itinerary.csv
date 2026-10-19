@@ -1,0 +1,67 @@
+Numero,Giorno,Ora,Nome,Indirizzo,Tragitto,Note,Prenotazione,TagliaSeInRitardo,Lat,Lng
+,lunedi,11:00,"Arrivo (ipotesi: CDG)","","RER B fino a Gare du Nord/Châtelet, poi metro verso Place de Clichy: ~1h–1h15","Con valigie: evita le ore di punta. Se arrivi a Orly o Beauvais il tempo cambia.",NO,NO,49.0097,2.5479
+,lunedi,12:45,"Hotel zona Clichy: lascia le valigie","Place de Clichy (metro 2 e 13)","Place de Clichy (metro 2 e 13)","Check-in di solito dalle 15:00: chiedi solo deposito bagagli.",NO,NO,48.8837,2.3274
+,lunedi,13:00,"Trasferimento al Quartiere Latino","","Metro/RER ~35–40 min fino a Saint-Michel","Zaino leggero, biglietti già caricati.",NO,NO,48.8532,2.3442
+1,lunedi,13:45,"Chipotle Mexican Grill","96 Bd Saint-Germain, 5e","Da Saint-Michel ~600 m / 8 min a piedi","Aperto 11:00–23:00. Pranzo veloce (30 min).",NO,NO,48.8524,2.3458
+2,lunedi,14:30,"Cattedrale di Notre-Dame","6 Parvis Notre-Dame, 4e","Da Chipotle ~1,0 km / 14 min a piedi","40 min. Ingresso gratuito; controlla la coda sul sito ufficiale.",NO,NO,48.8529,2.35
+3,lunedi,15:20,"Sainte-Chapelle","10 Bd du Palais, 1er","Da Notre-Dame ~350 m / 5 min","60 min. PRENOTA biglietto a orario. D'inverno chiude presto (~17:00): non arrivare tardi.",SI,NO,48.8554,2.345
+4,lunedi,16:30,"Pantheon","Place du Panthéon, 5e","Da Sainte-Chapelle ~1,3 km / 17 min (Bd Saint-Michel)","45 min. Ultimo ingresso intorno alle 17:30 (verifica).",NO,NO,48.8462,2.3464
+5,lunedi,17:25,"Grande Mosquée de Paris","2 bis Pl. du Puits de l'Ermite, 5e","Dal Pantheon ~900 m / 12 min","Visita corta; chiude verso le 18:00 (verifica). Se chiusa, passa oltre: è la prima da sacrificare se sei in ritardo.",NO,SI,48.8423,2.3551
+,lunedi,18:05,"Trasferimento a Montparnasse","","Metro ~25 min (cambio a Place d'Italie, linea 6)","Metro linea 6 panoramica o linea 4 diretta verso Montparnasse.",NO,NO,48.8421,2.3218
+6,lunedi,18:30,"Bouillon Chartier Montparnasse","59 Bd du Montparnasse, 6e","Aperto 11:30–24:00, senza prenotazione","Cena 1h15. Dalla stazione Montparnasse la linea 13 ti riporta diretto a Place de Clichy.",NO,NO,48.8436,2.3251
+,lunedi,20:15,"Ritorno al Quartiere Latino","","Metro linea 4: Montparnasse → Saint-Michel (~10 min)","Ritorno comodo verso la zona jazz della Huchette.",NO,NO,48.8529,2.3461
+7,lunedi,21:00,"Caveau de la Huchette","5 Rue de la Huchette, 5e","Da Saint-Michel ~250 m / 4 min","Jazz dal vivo, ~1h30–2h. Arriva presto per un buon posto. Controlla il programma del lunedì sera.",NO,NO,48.8529,2.3461
+8,lunedi,23:00,"La Creperie Française","37 Rue Dauphine, 6e (sede Rue Dauphine)","Dal Caveau ~650 m / 9 min","Aperta fino alle 02:00: crêpe di fine serata.",NO,NO,48.8546,2.3392
+,lunedi,23:30,"Rientro in hotel","","Metro/notturno ~45 min","Ultima metro intorno all'1:00 verso Place de Clichy.",NO,NO,48.8837,2.3274
+,martedi,08:30,"Hotel → Musée d'Orsay","","Metro 13 fino a Invalides + RER C una fermata (o 20 min a piedi): ~35 min","Louvre e Orangerie sono chiusi il martedì: oggi musei Orsay/Rodin/Armée.",NO,NO,48.8599,2.3266
+9,martedi,09:30,"Musée d'Orsay","1 Rue de la Légion d'Honneur, 7e","Entra all'apertura","2h30–2h45. PRENOTA ingresso a orario. Chiuso il lunedì: per questo è oggi.",SI,NO,48.8599,2.3266
+,martedi,12:15,"Trasferimento a Rodin","","A piedi ~1,3 km / 17 min (Rue de Lille / Rue de Varenne)","Pranzo libero: boulangerie o caffè del giardino Rodin.",NO,NO,48.857,2.32
+10,martedi,13:15,"Musée Rodin","77 Rue de Varenne, 7e","Da Rue de Varenne, a piedi","1h30 museo + giardino (il Pensatore, Porta dell'Inferno).",NO,NO,48.8553,2.3159
+11,martedi,14:50,"Musée de l'Armée","Hôtel des Invalides, 129 Rue de Grenelle, 7e","Da Rodin ~600 m / 8 min","1h40. Controlla l'orario di chiusura invernale (16:45–18:00).",NO,NO,48.857,2.3125
+12,martedi,15:30,"Tomba di Napoleone I","Dôme des Invalides, Place Vauban, 7e","Nello stesso complesso degli Invalides","La tomba è nello stesso complesso. Inclusa nel biglietto Armée.",NO,NO,48.855,2.3125
+13,martedi,16:35,"Rue de l'Université","Rue de l'Université, 7e","Dall'Esplanade des Invalides verso il Champ de Mars: ~1,8 km / 25 min a piedi","Passeggiata con vista sulla Torre al tramonto: luce perfetta per le foto.",NO,NO,48.8595,2.2985
+14,martedi,17:20,"Torre Eiffel","Champ de Mars, 5 Av. Anatole France, 7e","Fine della Rue de l'Université","1h15. Se vuoi salire, PRENOTA online (secondo piano/vetta). La Torre brilla ogni ora dopo il tramonto per 5 minuti.",SI,NO,48.8584,2.2945
+15,martedi,18:50,"Port Debilly (quai sulla Senna)","Port Debilly, 16e","Da Eiffel via Pont d'Iéna ~700 m / 9 min","Lungosenna sotto il Trocadéro, spettacolare vista frontale della Torre.",NO,NO,48.8617,2.2938
+16,martedi,19:10,"Esplanade du Trocadéro","Place du Trocadéro, 16e","Da Port Debilly ~400 m / 6 min (salita)","15–20 min: foto classiche della Torre illuminata.",NO,NO,48.8624,2.2882
+17,martedi,19:45,"Grand Pacific Buffet","70 bis Av. de Suffren, 15e","Metro 6 Trocadéro → La Motte-Picquet–Grenelle (~10 min)","Aperto 12–15 e 19–23. Cena 1h15 (prenotabile). Circa 20–27 €.",SI,NO,48.8526,2.3006
+18,martedi,21:15,"10ème Ciel Rooftop","18 Av. de Suffren (Pullman Tour Eiffel), 15e","Dal Grand Pacific ~700 m / 9 min","Rooftop STAGIONALE: verifica che sia aperto a novembre prima di andarci. Aperto 18:00–01:00 quando attivo.",NO,NO,48.8555,2.2936
+,martedi,22:30,"Rientro in hotel","","Metro 6 Bir-Hakeim → Étoile, poi linea 2 → Place de Clichy (~40 min)","Rientro in sicurezza a Place de Clichy.",NO,NO,48.8837,2.3274
+,mercoledi,08:20,"Hotel → Orangerie","","Metro 13 fino a Champs-Élysées–Clemenceau (+ 700 m a piedi) ~25 min","Partenza presto per arrivare puntuali alle Ninfee.",NO,NO,48.8638,2.3227
+19,mercoledi,09:00,"Musée de l'Orangerie","Jardin des Tuileries (lato Concorde), 1er","Entra all'apertura","1h15: le Ninfee di Monet con poca folla. Aperto 9:00–18:00 il mercoledì.",NO,NO,48.8638,2.3227
+20,mercoledi,10:30,"Museo del Louvre","Rue de Rivoli, 1er","Dall'Orangerie attraverso le Tuileries ~900 m / 12 min","3h. PRENOTA ingresso a orario. Il mercoledì è aperto fino alle 21:00.",SI,NO,48.8606,2.3376
+21,mercoledi,13:40,"Giardino del Palazzo Reale","Place Colette / Rue de Montpensier, 1er","Dal Louvre ~600 m / 8 min","20 min: portici, colonne di Buren e giardino tranquillo.",NO,NO,48.8648,2.3372
+22,mercoledi,14:15,"Brique Machine (buffet)","161 Rue Montmartre, 2e","Dal Palazzo Reale ~1,1 km / 15 min","Pranzo 1h15. Verifica gli orari del pranzo/pausa prima di partire.",NO,NO,48.8706,2.3424
+23,mercoledi,15:35,"Ohr Vintage","Sq. Pierre Lazareff / 73 Rue Réaumur, 2e","Da Brique Machine ~400 m / 5 min","Aperto 10:30–19:30. 15 min.",NO,NO,48.8665,2.3475
+24,mercoledi,16:00,"ALATONE Friperie","15 Rue de Turbigo, 2e","Da Ohr ~600 m / 8 min","Aperto circa 11:00–19:30. 20 min.",NO,NO,48.8654,2.3512
+25,mercoledi,16:25,"Souvenir Machine","7 Rue de Turbigo, 2e","A fianco di Alatone, ~100 m","15 min.",NO,NO,48.8647,2.3518
+26,mercoledi,16:45,"Friperie Paris – Guerrisol","8 Bd de Sébastopol, 4e (verifica che sia la tua sede)","Da Souvenir Machine ~600 m / 8 min","Esistono altre sedi (Barbès, Rochechouart): controlla il tuo pin. Prima da tagliare se sei in ritardo.",NO,SI,48.8589,2.3486
+27,mercoledi,17:05,"Bourse de Commerce – Pinault Collection","2 Rue de Viarmes, 1er","Da Guerrisol ~900 m / 12 min","1h. Chiuso il martedì: ottimo oggi. Verifica la chiusura serale. Da tagliare se in ritardo.",NO,SI,48.8626,2.3429
+,mercoledi,18:15,"Trasferimento a Haussmann","","Metro ~20 min (Les Halles/Châtelet → Opéra o Havre-Caumartin)","Spostamento rapido verso il quartiere dei Grandi Magazzini.",NO,NO,48.8735,2.33
+28,mercoledi,19:00,"The Printemps Rooftop Terrace","64 Bd Haussmann, 9e","Metro fermata Havre-Caumartin","25 min. Terrazza panoramica gratuita sui tetti di Parigi. Verifica l'apertura serale della terrazza.",NO,NO,48.8738,2.3283
+29,mercoledi,19:30,"Galeries Lafayette Haussmann","40 Bd Haussmann, 9e","Accanto al Printemps, ~150 m","25 min: cupola Art Nouveau e spettacolari decorazioni natalizie di novembre. Chiude intorno alle 20:00.",NO,NO,48.8734,2.3321
+30,mercoledi,20:15,"Bouillon Chartier Grands Boulevards","7 Rue du Faubourg Montmartre, 9e","Da Galeries Lafayette ~1,3 km / 17 min a piedi (o metro 8/9 Grands Boulevards)","Aperto 11:30–24:00, nessuna prenotazione. Il servizio si ferma verso le 22:00. Storica sala Belle Époque.",NO,NO,48.8719,2.3429
+,mercoledi,22:00,"Rientro in hotel","","Metro 8 → Madeleine → 14 → Saint-Lazare → 13 (~35 min) oppure 8/9 + cambio a Saint-Lazare","Rientro all'hotel a Place de Clichy.",NO,NO,48.8837,2.3274
+31,giovedi,08:45,"Le Mansart (colazione)","1 Rue Mansart, 9e","Dall'hotel ~500 m / 7 min a piedi","Aperto dalle 09:00 secondo gli annunci: se chiude all'apertura, vai direttamente a Montmartre.",NO,NO,48.8817,2.334
+32,giovedi,09:30,"Le Singe qui Lit","Place du Tertre, 18e (6/17/21: verifica il tuo pin)","Da Le Mansart ~1,2 km / 17 min in salita (Rue Lepic)","15 min souvenir. Controlla il pin salvato su Maps.",NO,NO,48.8865,2.3408
+33,giovedi,10:00,"Basilica del Sacro Cuore","35 Rue du Chevalier de la Barre, 18e","Da Place du Tertre ~300 m / 4 min","1h30 con vista panoramica su tutta Parigi e salita alla cupola.",NO,NO,48.8867,2.3431
+,giovedi,11:35,"Trasferimento a Buttes-Chaumont","","Metro 2 Anvers → Jaurès, poi 7bis → Botzaris (~35 min)","Tragitto verso il parco romantico del 19° arrondissement.",NO,NO,48.8795,2.3831
+34,giovedi,12:10,"Parc des Buttes-Chaumont","Ingresso Botzaris, 19e","Ingresso fermata Botzaris","50 min. È la tappa più decentrata: la prima da tagliare se sei in ritardo.",NO,SI,48.8795,2.3831
+35,giovedi,13:45,"Mangez et cassez-vous","39 Rue Taitbout, 9e (altre sedi: 64 Rue Alexandre Dumas, 5 Bd de Picpus)","Metro ~35 min da Buttes-Chaumont","Burger economici e famosi (1–10 €). Verifica quale sede è nel tuo pin e pranza lì.",NO,NO,48.8753,2.3364
+36,giovedi,14:40,"Opéra Garnier","Place de l'Opéra, 9e","Da Taitbout ~800 m / 10 min","1h15. Chiude ~17:00, ultimo ingresso ~16:30 (verifica). Soffitto di Chagall e scalone monumentale.",NO,NO,48.872,2.3316
+37,giovedi,16:10,"Chiesa Santa Maria Maddalena","Place de la Madeleine, 8e","Dall'Opéra ~900 m / 12 min","25 min. Tempio neoclassico maestoso. Da tagliare se in ritardo.",NO,SI,48.87,2.3248
+38,giovedi,17:00,"Parc Monceau","Bd de Courcelles, 8e","Metro 9/12/14 + cambio (~20 min)","40 min al tramonto. Il parco chiude la sera (verifica orario cancelli). Rotonda e rovine neoclassiche.",NO,NO,48.8797,2.3089
+39,giovedi,18:00,"Arco di Trionfo","Place Charles de Gaulle, 8e","Metro 2 Monceau → Charles de Gaulle–Étoile (3 fermate, ~6 min)","1h15 inclusa la terrazza (aperta fino a tarda sera). Compra il biglietto prima.",SI,NO,48.8738,2.295
+40,giovedi,19:45,"Bouillon Julien","16 Rue du Faubourg Saint-Denis, 10e","Metro ~30 min da Étoile (stazione Strasbourg–Saint-Denis)","Aperto ogni giorno dalle 11:45 a mezzanotte. Cena fino alle 21:15. Meraviglioso interno Art Nouveau.",NO,NO,48.8708,2.3547
+,giovedi,21:30,"Rientro in hotel","","Metro ~30 min","Rientro a Place de Clichy.",NO,NO,48.8837,2.3274
+,venerdi,07:30,"Hotel → Père Lachaise","","Metro 2 diretta fino a Père Lachaise (~30 min)","Chiedi all'hotel di tenere le valigie e di restituirle alle 14:00.",NO,NO,48.8614,2.3957
+41,venerdi,08:00,"Tomba di Édith Piaf – Cimitero Père Lachaise","Divisione 97, Cimitero Père Lachaise, 20e","Dalla Porta Gambetta ~10 min dentro il cimitero","Cimitero aperto lun–ven 08:00–17:30. Visita 1h30 (Piaf + Jim Morrison, Oscar Wilde, Chopin se vuoi).",NO,NO,48.8614,2.3957
+,venerdi,09:50,"Père Lachaise → Les Sales Voleurs","","Metro 3 Père Lachaise → Parmentier (2 fermate, 4 min)","Tragitto rapido per l'apertura dei negozi.",NO,NO,48.8643,2.3752
+42,venerdi,10:00,"Les Sales Voleurs République","66 Av. de la République, 11e","Metro fermata Parmentier","Aperto circa 10:00–19:00. 30 min: friperie al peso.",NO,NO,48.8643,2.3752
+43,venerdi,10:45,"Be Nina","110 Rue du Faubourg du Temple, 11e","Da Sales Voleurs ~1,0 km / 13 min","20 min. Aperto 10:00–20:00. Da tagliare se sei in ritardo.",NO,SI,48.8712,2.3732
+44,venerdi,11:30,"Archives Nationales – Hôtel de Soubise","60 Rue des Francs-Bourgeois, 3e","Da Be Nina ~2,0 km / 25 min (République → Rue du Temple)","45 min. Il venerdì il museo apre 10:00–17:30. Splendido cortile d'onore nel Marais.",NO,NO,48.8601,2.3592
+45,venerdi,12:25,"La Perlerie 22","22 Rue du Temple, 4e","Dagli Archives ~600 m / 8 min","20 min. Aperto 10:00–19:00. Da tagliare se sei in ritardo.",NO,SI,48.8587,2.3533
+46,venerdi,12:50,"FREE'P'STAR","61 Rue de la Verrerie, 4e","Dalla Perlerie ~350 m / 5 min","15 min. Aperto 11:00–20:30. Celebre negozio vintage del Marais.",NO,NO,48.8578,2.3532
+47,venerdi,13:10,"Aux Merveilleux de Fred","24 Rue du Pont Louis-Philippe, 4e","Da Free'P'Star ~500 m / 7 min","5 min: dolce da portare con te (meringhe e panna tipiche). Aperto 07:30–20:00.",NO,NO,48.8554,2.3557
+,venerdi,13:20,"Rientro in hotel per le valigie","","Metro Hôtel de Ville → Place de Clichy (~35 min)","Arrivo previsto alle ~13:55 per recuperare i bagagli.",NO,NO,48.8837,2.3274
+,venerdi,14:10,"Hotel → aeroporto","","RER B ~1h–1h15 (se CDG)","Arrivo previsto alle ~15:30: esattamente 2 ore prima del volo delle 17:30.",NO,NO,49.0097,2.5479
+,venerdi,17:30,"Partenza volo","","Imbarco e decollo","Fine del viaggio a Parigi.",NO,NO,49.0097,2.5479
